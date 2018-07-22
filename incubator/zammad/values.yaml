@@ -64,4 +64,4 @@ affinity: {}
 
 postgresql:
   postgresUser: zammad
-  postgresDatabase: zammad-production
+  postgresDatabase: zammad_production
