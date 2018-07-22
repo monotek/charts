@@ -1,0 +1,15 @@
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm Zammad chart for Kubernetes
+name: zammad
+version: 0.1.0
+appVersion: 2.5.0
+description: Zammad is a web based open source helpdesk/customer support system with many features to manage customer communication via several channels like telephone, facebook, twitter, chat and e-mails.
+icon: https://zammad.org/assets/images/zammad%20community%20logo.svg
+sources:
+- https://github.com/zammad/zammad
+maintainers:
+- name: André Bauer
+  email: monotek23@gmail.com
+- name: Martin Edenhofer
+  email: me@edenhofer.de
