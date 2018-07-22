@@ -59,11 +59,9 @@ apiVersion: v1
 metadata:
   name: {{ template "zammad.fullname" . }}-postgresql
   labels:
-    app: {{ template "zammad.name" . }}    app: elasticsearch
-    component: searchindex
+    app: {{ template "zammad.name" . }}
     chart: {{ template "zammad.chart" . }}
-    release: {{ .Release.Name }}    app: elasticsearch
-    component: searchindex
+    release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}

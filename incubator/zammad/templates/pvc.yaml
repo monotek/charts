@@ -1,25 +1,7 @@
----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ template "zammad.fullname" . }}
-  labels:
-    app: "{{ template "zammad.name" . }}"
-    release: {{ .Release.Name | quote }}
-    heritage: {{ .Release.Service | quote }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10G
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: {{ template "zammad.fullname" . }}-backup
   labels:
     app: "{{ template "zammad.name" . }}"
     release: {{ .Release.Name | quote }}
