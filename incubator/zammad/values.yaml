@@ -21,6 +21,23 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+env:
+  ELASTICSEARCH_HOST: zammad-elasticsearch-client
+  ELASTICSEARCH_PORT: 9200
+  MEMCACHED_HOST: zammad-memcached
+  MEMCACHED_PORT: 11211
+  POSTGRESQL_HOST: zammad-postgresql
+  POSTGRESQL_PORT: 5432
+  POSTGRESQL_USER: postgres
+  POSTGRESQL_PASS:
+  POSTGRESQL_DB: zammad_production
+  POSTGRESQL_DB_CREATE: true
+  ZAMMAD_RAILSSERVER_HOST: zammad-railsserver
+  ZAMMAD_RAILSSERVER_PORT: 3000
+  ZAMMAD_WEBSOCKET_HOST: zammad-websocket
+  ZAMMAD_WEBSOCKET_PORT: 6042
+  NGINX_SERVER_NAME: _
+
 persistence:
   enabled: true
   ## A manually managed Persistent Volume and Claim
@@ -63,5 +80,5 @@ affinity: {}
 
 
 postgresql:
-  postgresUser: zammad
+  postgresUser: postgres
   postgresDatabase: zammad_production

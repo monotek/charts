@@ -23,6 +23,11 @@ spec:
       - name: {{ .Chart.Name }}-init
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
         args: [ "zammad-init" ]
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
          - name: {{ template "zammad.fullname" . }}
@@ -31,6 +36,11 @@ spec:
       - name: {{ .Chart.Name }}-nginx
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
         args: [ "zammad-nginx" ]
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
         ports:
         - containerPort: 80
           name: nginx
@@ -57,6 +67,11 @@ spec:
       - name: {{ .Chart.Name }}-railsserver
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
         args: ["zammad-railsserver"]
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - name: railsserver
@@ -81,6 +96,11 @@ spec:
       - name: {{ .Chart.Name }}-scheduler
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
         args: [ "zammad-scheduler" ]
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         volumeMounts:
          - name: {{ template "zammad.fullname" . }}
@@ -90,6 +110,11 @@ spec:
       - name: {{ .Chart.Name }}-websocket
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
         args: [ "zammad-websocket" ]
+        env:
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}          
         imagePullPolicy: Always
         ports:
         - name: websocket
