@@ -38,7 +38,7 @@ spec:
         volumeMounts:
          - name: {{ template "zammad.fullname" . }}
            mountPath: /opt/zammad
-         - name: {{ template "zammad.fullname" . }}-config-nginx
+         - name: {{ template "zammad.fullname" . }}-nginx
            mountPath: /etc/nginx/sites-enabled
         readinessProbe:
           httpGet:
@@ -122,9 +122,9 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
       volumes:
-      - name: {{ template "zammad.fullname" . }}-config-nginx
+      - name: {{ template "zammad.fullname" . }}-nginx
         configMap:
-          name: {{ template "zammad.fullname" . }}-config-nginx
+          name: {{ template "zammad.fullname" . }}-nginx
       - name: {{ template "zammad.fullname" . }}
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:

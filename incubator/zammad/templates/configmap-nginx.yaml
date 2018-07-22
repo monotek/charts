@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "zammad.fullname" . }}-config-nginx
+  name: {{ template "zammad.fullname" . }}-nginx
   labels:
     app: "{{ template "zammad.name" . }}"
     release: {{ .Release.Name | quote }}
     heritage: {{ .Release.Service | quote }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"  
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 data:
   config: |-
     #
