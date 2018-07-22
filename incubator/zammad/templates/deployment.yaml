@@ -85,7 +85,7 @@ spec:
         volumeMounts:
          - name: {{ template "zammad.fullname" . }}
            mountPath: /opt/zammad
-          resources:
+           resources:
 {{ toYaml .Values.resources.scheduler | indent 12 }}
       - name: {{ .Chart.Name }}-websocket
         image: {{ .Values.image.repository }}:zammad-{{ .Values.image.tag }}
