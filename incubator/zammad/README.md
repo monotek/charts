@@ -2,9 +2,11 @@
 
 This directory contains a Kubernetes chart to deploy Zammad
 
+
 ## Prerequisites Details
 
 * Kubernetes 1.8+
+
 
 ## Chart Details
 
