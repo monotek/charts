@@ -30,7 +30,7 @@ The following table lists the configurable parameters of the zammad chart and th
 |             Parameter             |              Description                 |               Default               |
 |-----------------------------------|------------------------------------------|-------------------------------------|
 | `image.repository`                | Container image to use                   | `zammad/zammad-docker-compose`      |
-| `image.tag`                       | Container image tag to deploy            | `0.10.1`                            |
+| `image.tag`                       | Container image tag to deploy            | `2.5.0-43`                          |
 | `image.pullPolicy`                | Container pull policy                    | `IfNotPresent`                      |
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
