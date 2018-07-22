@@ -121,3 +121,14 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      volumes:
+      - name: {{ template "zammad.fullname" . }}-config-nginx
+        configMap:
+          name: {{ template "zammad.fullname" . }}-config-nginx
+      - name: {{ template "zammad.fullname" . }}
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistence.existingClaim | default (include "zammad.fullname" .) }}
+      {{- else }}
+        emptyDir: {}
+      {{- end -}}
