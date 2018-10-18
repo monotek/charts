@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "zammad.fullname" . }}
@@ -114,7 +114,7 @@ spec:
         {{- range $key, $value := .Values.env }}
         - name: "{{ $key }}"
           value: "{{ $value }}"
-        {{- end }}          
+        {{- end }}
         imagePullPolicy: Always
         ports:
         - name: websocket
