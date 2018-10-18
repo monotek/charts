@@ -81,18 +81,17 @@ affinity: {}
 
 elasticsearch:
   image:
-    repository: "zammad/zammad-docker-compose"
-    tag: "zammad-elasticsearch-2.6.0-31"
+    repository: "docker.elastic.co/elasticsearch/elasticsearch"
+    tag: "5.6.12"
   extraInitContainers: |
     - name: "plugin-install-ingest-attachment"
-      image: "zammad/zammad-docker-compose:zammad-elasticsearch-2.6.0-31"
+      image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
       command: ["/bin/bash"]
       args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment"]
     - name: "plugin-install-mapper-size"
-      image: "zammad/zammad-docker-compose:zammad-elasticsearch-2.6.0-31"
+      image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
       command: ["/bin/bash"]
       args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-size"]
-
 
 postgresql:
   postgresUser: zammad
