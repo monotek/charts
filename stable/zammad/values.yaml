@@ -1,6 +1,6 @@
 image:
   repository: zammad/zammad-docker-compose
-  tag: 2.6.0-31
+  tag: 2.8.0-16
   pullPolicy: IfNotPresent
 
 service:
