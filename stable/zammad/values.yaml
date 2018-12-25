@@ -108,6 +108,10 @@ elasticsearch:
       replicas: 1
 
 
+memcached:
+  replicaCount: 1
+
+
 postgresql:
   postgresUser: zammad
   postgresPassword: zammad
