@@ -37,7 +37,6 @@ env:
   ZAMMAD_RAILSSERVER_PORT: 3000
   ZAMMAD_WEBSOCKET_HOST: zammad-websocket
   ZAMMAD_WEBSOCKET_PORT: 6042
-  NGINX_SERVER_NAME: _
 
 persistence:
   enabled: true
