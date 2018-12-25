@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: {{ template "zammad.fullname" . }}
   labels:
-    app: {{ template "zammad.name" . }}
-    chart: {{ template "zammad.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app.kubernetes.io/name: {{ include "zammad.name" . }}
+    helm.sh/chart: {{ include "zammad.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,5 +15,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ template "zammad.name" . }}
-    release: {{ .Release.Name }}
+    app.kubernetes.io/name: {{ include "zammad.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: {{ template "zammad.fullname" . }}-nginx
   labels:
-    app: "{{ template "zammad.name" . }}"
-    release: {{ .Release.Name | quote }}
-    heritage: {{ .Release.Service | quote }}
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    app.kubernetes.io/name: {{ include "zammad.name" . }}
+    helm.sh/chart: {{ include "zammad.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 data:
   config: |-
     #

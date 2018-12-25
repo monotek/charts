@@ -3,21 +3,21 @@ kind: StatefulSet
 metadata:
   name: {{ template "zammad.fullname" . }}
   labels:
-    app: {{ template "zammad.name" . }}
-    chart: {{ template "zammad.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    app.kubernetes.io/name: {{ include "zammad.name" . }}
+    helm.sh/chart: {{ include "zammad.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ template "zammad.name" . }}
-      release: {{ .Release.Name }}
+      app.kubernetes.io/name: {{ include "zammad.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "zammad.name" . }}
-        release: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ include "zammad.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       initContainers:
       - name: {{ .Chart.Name }}-init
