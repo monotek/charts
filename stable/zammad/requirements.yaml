@@ -1,13 +1,13 @@
 dependencies:
   - name: elasticsearch
-    repository: ttps://kubernetes-charts.storage.googleapis.com/
-    version: 1.11.1
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 1.15.1
     condition: useElasticsearch
   - name: memcached
-    version: 2.3.1
+    version: 2.4.0
     repository: https://kubernetes-charts.storage.googleapis.com/
     condition: useMemcached
   - name: postgresql
-    version: 1.0.0
+    version: 3.7.0
     repository: https://kubernetes-charts.storage.googleapis.com/
     condition: usePostgres
