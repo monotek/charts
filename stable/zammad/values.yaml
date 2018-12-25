@@ -113,6 +113,6 @@ memcached:
 
 
 postgresql:
-  postgresUser: zammad
-  postgresPassword: zammad
-  postgresDatabase: zammad_production
+  postgresqlUsername: zammad
+  postgresqlPassword: zammad
+  postgresqlDatabase: zammad_production
