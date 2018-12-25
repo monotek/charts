@@ -78,6 +78,7 @@ tolerations: []
 
 affinity: {}
 
+
 elasticsearch:
   image:
     repository: "docker.elastic.co/elasticsearch/elasticsearch"
@@ -105,7 +106,6 @@ elasticsearch:
       replicas: 1
     master:
       replicas: 1
-
 
 
 postgresql:
