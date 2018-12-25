@@ -32,7 +32,7 @@ env:
   POSTGRESQL_USER: zammad
   POSTGRESQL_PASS: zammad
   POSTGRESQL_DB: zammad_production
-  POSTGRESQL_DB_CREATE: true
+  POSTGRESQL_DB_CREATE: false
   ZAMMAD_RAILSSERVER_HOST: zammad-railsserver
   ZAMMAD_RAILSSERVER_PORT: 3000
   ZAMMAD_WEBSOCKET_HOST: zammad-websocket
@@ -82,25 +82,31 @@ affinity: {}
 elasticsearch:
   image:
     repository: "docker.elastic.co/elasticsearch/elasticsearch"
-    tag: "5.6.12"
-  extraInitContainers: |
-    - name: "remove-xpack"
-      image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
-      command: ["/bin/bash"]
-      args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack --purge"]
-    - name: "plugin-install-ingest-attachment"
-      image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
-      command: ["/bin/bash"]
-      args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment"]
-    - name: "plugin-install-mapper-size"
-      image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
-      command: ["/bin/bash"]
-      args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-size"]
+    tag: "5.6.14"
+  # # volume mount missing?
+  # extraInitContainers: |
+  #   - name: "remove-xpack"
+  #     image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.14"
+  #     command: ["/bin/bash"]
+  #     args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin remove x-pack --purge"]
+  #   - name: "plugin-install-ingest-attachment"
+  #     image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.14"
+  #     command: ["/bin/bash"]
+  #     args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment"]
+  #   - name: "plugin-install-mapper-size"
+  #     image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.14"
+  #     command: ["/bin/bash"]
+  #     args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-size"]
   cluster:
+    xpackEnable: false
     env:
       MINIMUM_MASTER_NODES: "1"
+      XPACK_MONITORING_ENABLED: false
   client:
     replicas: 1
+    # temp fix until https://github.com/helm/charts/pull/9910 is merged
+    serviceAnnotations:
+      service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
   data:
     terminationGracePeriodSeconds: 60
     replicas: 1
