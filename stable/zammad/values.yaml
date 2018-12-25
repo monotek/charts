@@ -95,6 +95,17 @@ elasticsearch:
       image: "docker.elastic.co/elasticsearch/elasticsearch:5.6.12"
       command: ["/bin/bash"]
       args: ["-c", "yes | /usr/share/elasticsearch/bin/elasticsearch-plugin install mapper-size"]
+  cluster:
+    env:
+      MINIMUM_MASTER_NODES: "1"
+    client:
+      replicas: 1
+    data:
+      terminationGracePeriodSeconds: 60
+      replicas: 1
+    master:
+      replicas: 1
+
 
 
 postgresql:
