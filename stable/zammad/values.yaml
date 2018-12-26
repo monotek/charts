@@ -86,15 +86,15 @@ elasticsearch:
   cluster:
     xpackEnable: false
     env:
-      MINIMUM_MASTER_NODES: "1"
+      MINIMUM_MASTER_NODES: "2"
       XPACK_MONITORING_ENABLED: false
   client:
-    replicas: 1
+    replicas: 2
   data:
     terminationGracePeriodSeconds: 60
-    replicas: 1
+    replicas: 2
   master:
-    replicas: 1
+    replicas: 2
 
 
 memcached:
