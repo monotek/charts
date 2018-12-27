@@ -1,7 +1,7 @@
 apiVersion: v1
 name: zammad
 version: 0.1.0
-appVersion: 2.6.0
+appVersion: 2.8.0
 description: Zammad is a web based open source helpdesk/customer support system with many features to manage customer communication via several channels like telephone, facebook, twitter, chat and e-mails.
 icon: https://zammad.org/assets/images/zammad%20community%20logo.svg
 sources:
